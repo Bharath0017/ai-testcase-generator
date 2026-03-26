@@ -76,7 +76,7 @@ project/
 git clone https://github.com/your-username/ai-testcase-generator.git
 cd backend
 
-### 2.Install dependencies
+ 2.Install dependencies
 pip install -r requirements.txt
 
 3.Run backend
