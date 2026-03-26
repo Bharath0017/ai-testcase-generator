@@ -28,7 +28,44 @@ The system takes a requirement or code input and:
 - Simple and interactive UI  
 
 ---
+## Challenges Faced
+1. Handling Different Types of Input
+The system needed to work for both natural language requirements and technical descriptions. Designing logic that works across varied input formats was challenging.
 
+2. Generating Meaningful Test Cases
+Initially, the system produced generic test cases. Enhancing it to generate context-aware cases (e.g., login, memory, loops) required careful keyword mapping and logic design.
+
+3. Integrating AI with Rule-Based Logic
+Combining a transformer-based NLP model with deterministic rule-based logic required balancing:
+AI flexibility
+Rule-based accuracy
+Ensuring both worked together without conflict was a key challenge.
+
+4. Designing Bug Risk Prediction
+Creating a scoring system for risk prediction was difficult, as it required identifying:
+High-risk keywords
+Assigning appropriate weights
+Defining meaningful thresholds
+
+5. Frontend–Backend Communication
+Initially faced issues with:
+API calls not working
+CORS errors
+Incorrect data rendering
+These were resolved by properly configuring Flask-CORS and debugging API responses.
+
+6. Deployment Challenges
+Deploying the project required:
+Creating correct configuration files (Procfile, requirements.txt)
+Handling environment dependencies
+Ensuring compatibility with deployment platforms
+
+7. Debugging and Version Control Issues
+While pushing code to GitHub, issues like:
+Incorrect repository setup
+Merge conflicts
+Branch mismatches
+---
 ## How It Works
 1. User enters a requirement or code snippet  
 2. Backend processes input using:
@@ -65,6 +102,11 @@ project/
 │── Procfile
 
 ---
+
+## Demo Video Link
+https://drive.google.com/file/d/1Di028jBa5TE3LtDQwtrJ9BSAXhSNnadT/view?usp=sharing
+---
+
 ##  How to Run Locally
 ---
 
