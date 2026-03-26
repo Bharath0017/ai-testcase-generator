@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Test Case Generator</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+        textarea {
+            width: 60%;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #22c55e;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>AI Test Case Generator</h2>
+
+<textarea id="input" rows="6" placeholder="Enter requirement or code..."></textarea><br><br>
+<button onclick="analyze()">Generate</button>
+
+<div id="output"></div>
+
+<script>
+function analyze() {
+    const input = document.getElementById("input").value;
+
+    fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input: input })
+    })
+    .then(res => res.json())
+    .then(data => {
+        let result = `<b>Risk:</b> ${data.risk}<br>`;
+        result += `<b>AI Label:</b> ${data.ai_label}<br>`;
+        result += `<b>Confidence:</b> ${data.confidence.toFixed(2)}<br><br>`;
+        result += `<b>Keywords:</b> ${data.keywords.join(", ")}<br><br>`;
+
+        result += "<b>Test Cases:</b><ul>";
+        data.test_cases.forEach(tc => {
+            result += `<li>${tc}</li>`;
+        });
+        result += "</ul>";
+
+        document.getElementById("output").innerHTML = result;
+    });
+}
+</script>
+
+</body>
+</html>
